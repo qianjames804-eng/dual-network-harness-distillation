@@ -1,0 +1,27 @@
+$:
+  push:
+    - name: cpu-validation-gate
+      docker:
+        image: python:3.12-slim
+      stages:
+        - name: install-ci-dependencies
+          script: python -m pip install --no-cache-dir -r requirements-ci.lock
+        - name: compile-and-test
+          script: python -m compileall -q src tools && python -m pytest -q
+        - name: validate-configurations
+          script: python -m src.validate_config --config configs/resource_adapted_smoke.yaml && python -m src.validate_config --config configs/paper_faithful_mvp.yaml && python -m src.validate_config --config configs/full.yaml
+        - name: validate-spark-package
+          script: python tools/check_spark_package.py
+  pull_request:
+    - name: cpu-validation-gate
+      docker:
+        image: python:3.12-slim
+      stages:
+        - name: install-ci-dependencies
+          script: python -m pip install --no-cache-dir -r requirements-ci.lock
+        - name: compile-and-test
+          script: python -m compileall -q src tools && python -m pytest -q
+        - name: validate-configurations
+          script: python -m src.validate_config --config configs/resource_adapted_smoke.yaml && python -m src.validate_config --config configs/paper_faithful_mvp.yaml && python -m src.validate_config --config configs/full.yaml
+        - name: validate-spark-package
+          script: python tools/check_spark_package.py

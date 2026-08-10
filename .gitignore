@@ -1,0 +1,14 @@
+.venv/
+.cache/
+.docx_render/
+.pytest_cache/
+.pytest-tmp/
+.spark-data/
+__pycache__/
+*.py[cod]
+outputs/checkpoints/
+outputs/traces/
+outputs/features/
+outputs/**/checkpoints/
+outputs/**/traces/
+outputs/**/features/

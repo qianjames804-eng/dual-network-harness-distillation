@@ -1,0 +1,45 @@
+profile: resource_adapted_smoke
+purpose: pipeline_validation_only
+seed: 42
+dataset:
+  name: openai/gsm8k
+  revision: 740312add88f781978c0658806c59bc2815b9866
+  config: main
+  train_split: train
+  eval_split: test
+  train_examples: 16
+  eval_examples: 8
+  cache_dir: .cache/huggingface
+teacher:
+  id: offline:gsm8k_reference_solutions
+  intended_id: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+  trace_source: gsm8k_reference_answer
+  adaptation: >-
+    The 7B teacher cannot be loaded reliably on a 4 GB GTX 1650. GSM8K
+    reference reasoning is used only as a deterministic clean-trace proxy.
+student:
+  id: Qwen/Qwen2.5-0.5B-Instruct
+  revision: 7ae557604adf67be50417f59c2c2f167def9a775
+  intended_id: Qwen/Qwen2.5-1.5B-Instruct
+  dtype: float16
+training:
+  max_length: 256
+  per_device_batch_size: 1
+  gradient_accumulation_steps: 4
+  max_steps: 8
+  learning_rate: 0.0002
+  warmup_ratio: 0.0
+  weight_decay: 0.0
+  gradient_checkpointing: true
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+evaluation:
+  max_prompt_length: 384
+  max_new_tokens: 128
+  do_sample: false
+  batch_size: 1
+outputs:
+  root: outputs
+  results_csv: results.csv

@@ -1,0 +1,10 @@
+.git
+.venv
+.cache
+.spark-data
+.docx_render
+.pytest_cache
+**/__pycache__
+**/*.pyc
+outputs
+*.docx

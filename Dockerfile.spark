@@ -1,0 +1,14 @@
+ARG NGC_PYTORCH_IMAGE=nvcr.io/nvidia/pytorch:25.11-py3
+FROM ${NGC_PYTORCH_IMAGE}
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    TOKENIZERS_PARALLELISM=false
+
+WORKDIR /workspace/experiment
+COPY requirements-spark.lock /tmp/requirements-spark.lock
+RUN python -m pip install --no-cache-dir -r /tmp/requirements-spark.lock
+COPY . /workspace/experiment
+
+CMD ["bash", "scripts/spark/preflight.sh"]

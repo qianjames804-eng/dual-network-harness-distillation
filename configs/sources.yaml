@@ -1,0 +1,40 @@
+checked_at: 2026-08-10
+models:
+  deepseek_r1_distill_qwen_7b:
+    url: https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+    revision: 916b56a44061fd5cd7d6a8fb632557ed4f724f60
+    license: MIT with upstream Qwen Apache-2.0 terms noted in model card
+  deepseek_r1_distill_qwen_1_5b:
+    url: https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B
+    revision: ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562
+    license: MIT with upstream Qwen Apache-2.0 terms noted in model card
+  qwen2_5_1_5b_instruct:
+    url: https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct
+    revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+    license: Apache-2.0
+  qwen2_5_0_5b_instruct:
+    url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct
+    revision: 7ae557604adf67be50417f59c2c2f167def9a775
+    license: Apache-2.0
+datasets:
+  gsm8k:
+    url: https://huggingface.co/datasets/openai/gsm8k
+    revision: 740312add88f781978c0658806c59bc2815b9866
+    license: MIT
+defenses:
+  ads:
+    paper: https://arxiv.org/abs/2504.13146
+    official_project: https://antidistillation.com/
+    official_code: null
+    note: No author-linked code repository was exposed by the paper/project page.
+  doge:
+    paper: https://arxiv.org/abs/2505.19504
+    repo: https://github.com/UNITES-Lab/DOGe
+    commit: 23b709aaa21206030307e078af6a2a4014b2a1e5
+    license: MIT
+  trace_rewriting:
+    paper: https://arxiv.org/abs/2602.15143
+    repo: https://github.com/xhOwenMa/trace-rewriting
+    commit: a2afa048f6967badf9d4894c912469547eafd452
+    license: not_declared_in_repository_root_at_check_time
+

@@ -1,0 +1,30 @@
+profile: full
+purpose: hypothesis_test
+seeds: [42, 43, 44]
+datasets:
+  - train: openai/gsm8k
+    test: openai/gsm8k
+  - train: DigitalLearningGmbH/MATH-lighteval
+    test: HuggingFaceH4/MATH-500
+teacher:
+  id: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+student:
+  id: Qwen/Qwen2.5-1.5B-Instruct
+  second_architecture: null
+training:
+  max_length: 1024
+  per_device_batch_size: 1
+  gradient_accumulation_steps: 16
+  epochs: 1
+  learning_rate: 0.0002
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+fairness:
+  comparisons: [fixed_raw_pool, fixed_train_tokens]
+defenses: [clean, ads, doge, rewrite]
+ablations: [no_nn, nn1_only, nn2_only, dual]
+outputs:
+  root: outputs
+  results_csv: results.csv
+

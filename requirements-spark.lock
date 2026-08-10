@@ -1,0 +1,11 @@
+# PyTorch/CUDA are supplied by the NVIDIA NGC base image. Do not add torch here.
+transformers==4.53.2
+datasets==4.0.0
+peft==0.16.0
+accelerate==1.8.1
+safetensors==0.5.3
+huggingface-hub==0.33.4
+hf_xet==1.6.0
+filelock==3.18.0
+PyYAML==6.0.2
+tqdm==4.67.1
