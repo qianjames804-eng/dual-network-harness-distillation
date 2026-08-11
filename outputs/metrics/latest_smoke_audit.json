@@ -1,7 +1,7 @@
 {
   "status": "pass",
-  "run_id": "resource_adapted_smoke-s42-20260810T040742Z",
-  "rows": 2,
+  "run_id": "resource_adapted_smoke-s42-20260811T034757Z",
+  "rows": 4,
   "seed": 42,
   "fixed_raw_pool": true,
   "schema_columns": 30

@@ -1,0 +1,20 @@
+{
+  "run_id": "resource_adapted_smoke-s42-20260811T034757Z",
+  "profile": "resource_adapted_smoke",
+  "teacher_trace_accuracy": 1.0,
+  "base_accuracy": 0.0,
+  "distilled_accuracy": 0.25,
+  "distill_gain": 0.25,
+  "train_tokens": 1644,
+  "train_metrics": {
+    "train_runtime": 3.5954,
+    "train_samples_per_second": 8.9,
+    "train_steps_per_second": 2.225,
+    "total_flos": 14719190284800.0,
+    "train_loss": 1.6641672030091286,
+    "epoch": 2.0,
+    "global_step": 8
+  },
+  "wall_seconds": 26.914236646000063,
+  "claim_scope": "engineering smoke test only"
+}
