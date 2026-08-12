@@ -17,4 +17,5 @@ outputs/**/*.lock
 outputs/**/*.tmp
 outputs/**/*.partial
 wandb/
+external/
 *.log

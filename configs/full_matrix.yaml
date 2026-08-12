@@ -45,8 +45,8 @@ nn2:
   learning_rate: 0.001
   paraphrases_per_question: 1
 defenses:
-  ads: {strengths: [low, medium, high], official_command: null}
-  doge: {strengths: [low, medium, high], official_repo: https://github.com/UNITES-Lab/DOGe}
-  rewrite: {official_repo: https://github.com/xhOwenMa/trace-rewriting}
+  ads: {strengths: [low, medium, high], source: https://antidistillation.com/traces/, official_code: unavailable, trace_source: author_project_page}
+  doge: {strengths: [low, medium, high], official_repo: https://github.com/UNITES-Lab/DOGe, fetch_script: tools/fetch_official_defenses.sh}
+  rewrite: {official_repo: https://github.com/xhOwenMa/trace-rewriting, fetch_script: tools/fetch_official_defenses.sh}
 fairness: {comparisons: [fixed_raw_pool, fixed_train_tokens]}
 outputs: {root: outputs, results_csv: results.csv}
