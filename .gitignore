@@ -12,3 +12,9 @@ outputs/features/
 outputs/**/checkpoints/
 outputs/**/traces/
 outputs/**/features/
+outputs/.harness.lock
+outputs/**/*.lock
+outputs/**/*.tmp
+outputs/**/*.partial
+wandb/
+*.log

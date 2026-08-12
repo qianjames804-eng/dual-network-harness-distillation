@@ -1,0 +1,52 @@
+profile: full_matrix
+purpose: paper_full_matrix
+seeds: [42, 43, 44]
+datasets:
+  gsm8k:
+    train: openai/gsm8k
+    test: openai/gsm8k
+    config: main
+    train_examples: 7473
+    eval_examples: 1319
+  math:
+    train: DigitalLearningGmbH/MATH-lighteval
+    test: HuggingFaceH4/MATH-500
+    train_examples: 7500
+    eval_examples: 500
+teacher:
+  id: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+  revision: 916b56a44061fd5cd7d6a8fb632557ed4f724f60
+  dtype: bfloat16
+student:
+  id: Qwen/Qwen2.5-1.5B-Instruct
+  revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+  dtype: bfloat16
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  learning_rate: 0.0002
+  epochs: 1
+  max_length: 1024
+  per_device_batch_size: 1
+  gradient_accumulation_steps: 16
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+nn1:
+  calibration_examples: 512
+  hidden_dim: 128
+  epochs: 100
+  learning_rate: 0.001
+  retention_grid: [0.2, 0.4, 0.6, 0.8, 1.0]
+  mode: weighted_loss
+nn2:
+  calibration_examples: 512
+  hidden_dim: 128
+  epochs: 100
+  learning_rate: 0.001
+  paraphrases_per_question: 1
+defenses:
+  ads: {strengths: [low, medium, high], official_command: null}
+  doge: {strengths: [low, medium, high], official_repo: https://github.com/UNITES-Lab/DOGe}
+  rewrite: {official_repo: https://github.com/xhOwenMa/trace-rewriting}
+fairness: {comparisons: [fixed_raw_pool, fixed_train_tokens]}
+outputs: {root: outputs, results_csv: results.csv}

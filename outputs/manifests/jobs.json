@@ -1,0 +1,146 @@
+[
+  {
+    "dataset": "gsm8k",
+    "seed": 42,
+    "method": "No-NN",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "gsm8k",
+    "seed": 42,
+    "method": "NN1-only",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "gsm8k",
+    "seed": 42,
+    "method": "NN2-only",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "gsm8k",
+    "seed": 42,
+    "method": "NN1+NN2",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "gsm8k",
+    "seed": 43,
+    "method": "No-NN",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "gsm8k",
+    "seed": 43,
+    "method": "NN1-only",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "gsm8k",
+    "seed": 43,
+    "method": "NN2-only",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "gsm8k",
+    "seed": 43,
+    "method": "NN1+NN2",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "gsm8k",
+    "seed": 44,
+    "method": "No-NN",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "gsm8k",
+    "seed": 44,
+    "method": "NN1-only",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "gsm8k",
+    "seed": 44,
+    "method": "NN2-only",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "gsm8k",
+    "seed": 44,
+    "method": "NN1+NN2",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "math",
+    "seed": 42,
+    "method": "No-NN",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "math",
+    "seed": 42,
+    "method": "NN1-only",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "math",
+    "seed": 42,
+    "method": "NN2-only",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "math",
+    "seed": 42,
+    "method": "NN1+NN2",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "math",
+    "seed": 43,
+    "method": "No-NN",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "math",
+    "seed": 43,
+    "method": "NN1-only",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "math",
+    "seed": 43,
+    "method": "NN2-only",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "math",
+    "seed": 43,
+    "method": "NN1+NN2",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "math",
+    "seed": 44,
+    "method": "No-NN",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "math",
+    "seed": 44,
+    "method": "NN1-only",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "math",
+    "seed": 44,
+    "method": "NN2-only",
+    "suite": "ablation"
+  },
+  {
+    "dataset": "math",
+    "seed": 44,
+    "method": "NN1+NN2",
+    "suite": "ablation"
+  }
+]

@@ -1,0 +1,48 @@
+profile: paper_faithful_mvp
+purpose: paper_mvp_smoke
+seed: 42
+dataset:
+  name: openai/gsm8k
+  revision: 740312add88f781978c0658806c59bc2815b9866
+  config: main
+  train_split: train
+  eval_split: test
+  train_examples: 32
+  eval_examples: 16
+  cache_dir: .cache/huggingface
+teacher:
+  id: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+  revision: 916b56a44061fd5cd7d6a8fb632557ed4f724f60
+  trace_source: generated
+  trace_path: outputs/traces/paper_faithful_smoke/clean_teacher_s42.jsonl
+  dtype: bfloat16
+  generation:
+    max_prompt_length: 512
+    max_new_tokens: 256
+    do_sample: false
+student:
+  id: Qwen/Qwen2.5-1.5B-Instruct
+  revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+  dtype: bfloat16
+training:
+  dtype: bfloat16
+  max_length: 512
+  per_device_batch_size: 1
+  gradient_accumulation_steps: 4
+  max_steps: 4
+  learning_rate: 0.0002
+  warmup_ratio: 0.0
+  weight_decay: 0.0
+  gradient_checkpointing: true
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+evaluation:
+  max_prompt_length: 512
+  max_new_tokens: 256
+  do_sample: false
+  batch_size: 1
+outputs:
+  root: outputs
+  results_csv: results.csv

@@ -161,8 +161,9 @@ def main() -> None:
         distilled_eval_seconds = time.perf_counter() - eval_started
         distilled_accuracy = float(distilled_metrics["accuracy"])
         total_seconds = base_seconds + train_seconds + distilled_eval_seconds
-        is_smoke = config["profile"] == "resource_adapted_smoke"
-        if is_smoke:
+        is_resource_smoke = config["profile"] == "resource_adapted_smoke"
+        is_paper_smoke = config.get("purpose") == "paper_mvp_smoke"
+        if is_resource_smoke:
             notes = (
                 "pipeline_validation_only; offline GSM8K reference reasoning "
                 "used as clean trace proxy; intended 7B teacher and 1.5B "
@@ -170,6 +171,13 @@ def main() -> None:
             )
             status = "smoke_success"
             claim_scope = "engineering smoke test only"
+        elif is_paper_smoke:
+            notes = (
+                "paper_mvp_smoke; real DeepSeek-R1-Distill-Qwen-7B traces; "
+                "small single-seed hardware-validation gate"
+            )
+            status = "paper_mvp_smoke_success"
+            claim_scope = "real Teacher-to-Student small-scale smoke test only"
         else:
             notes = "paper_faithful_mvp; generated clean Teacher reasoning traces"
             status = "paper_mvp_success"

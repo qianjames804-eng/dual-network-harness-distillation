@@ -1,0 +1,3 @@
+dataset,method,defense,accuracy_mean,accuracy_std,gain_mean,runs
+openai/gsm8k,B0-Base,clean,0.0,0.0,0.0,5
+openai/gsm8k,B1-Clean-KD,clean,0.325,0.06846531968814577,0.325,5
