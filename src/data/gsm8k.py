@@ -45,6 +45,7 @@ class GSM8KSFTDataset(TorchDataset):
         tokenizer,
         max_length: int,
         responses_by_question: dict[str, str] | None = None,
+        sample_weights: dict[str, float] | None = None,
     ):
         self.items: list[dict[str, Any]] = []
         eos = tokenizer.eos_token or ""
@@ -70,7 +71,7 @@ class GSM8KSFTDataset(TorchDataset):
                     "input_ids": input_ids,
                     "attention_mask": [1] * len(input_ids),
                     "labels": labels,
-                    "sample_weight": 1.0,
+                    "sample_weight": float((sample_weights or {}).get(row["question"], 1.0)),
                 }
             )
 

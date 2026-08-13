@@ -12,10 +12,13 @@ from src.data.gsm8k import CausalCollator
 
 
 class WeightedTrainer(Trainer):
+    weighted_loss_batches: int = 0
+
     def compute_loss(
         self, model, inputs, return_outputs: bool = False, num_items_in_batch=None
     ):
         weights = inputs.pop("sample_weight")
+        self.weighted_loss_batches += 1
         labels = inputs["labels"]
         outputs = model(**inputs)
         shifted_logits = outputs.logits[..., :-1, :].contiguous()
@@ -89,6 +92,9 @@ def train_lora(
     )
     metrics = trainer.train().metrics
     metrics["global_step"] = int(trainer.state.global_step)
+    # This is an execution witness, not a configuration flag: it increments
+    # only when `compute_loss` removes and applies NN1/sample weights.
+    metrics["weighted_loss_consumed_batches"] = int(trainer.weighted_loss_batches)
     final_dir = Path(output_dir) / "final_adapter"
     model.save_pretrained(final_dir)
     tokenizer.save_pretrained(final_dir)

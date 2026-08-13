@@ -23,13 +23,17 @@ def trace_features(records: list[dict]) -> np.ndarray:
 def utility_targets(before: np.ndarray, after: np.ndarray) -> np.ndarray:
     value = np.maximum(np.asarray(before) - np.asarray(after), 0); return value / max(float(value.max()), 1e-8)
 
-def fit_predict(features: np.ndarray, targets: np.ndarray, *, epochs: int, lr: float, seed: int, hidden_dim: int = 128) -> NN1Result:
+def fit_predict(features: np.ndarray, targets: np.ndarray, *, epochs: int, lr: float, seed: int, hidden_dim: int = 128, predict_features: np.ndarray | None = None) -> NN1Result:
     torch.manual_seed(seed); model = DataWeightMLP(features.shape[1], hidden_dim); opt = torch.optim.AdamW(model.parameters(), lr=lr)
     x, y = torch.tensor(features, dtype=torch.float32), torch.tensor(targets, dtype=torch.float32)
     for _ in range(epochs): opt.zero_grad(); loss=torch.nn.functional.mse_loss(model(x), y); loss.backward(); opt.step()
-    with torch.no_grad(): weights=model(x).numpy()
-    labels=(targets > np.median(targets)).astype(int); auc=float(roc_auc_score(labels, weights)) if len(set(labels)) == 2 else None
-    return NN1Result(weights, float(spearmanr(weights, targets).statistic), auc)
+    with torch.no_grad():
+        calibration_scores=model(torch.tensor(features,dtype=torch.float32)).numpy()
+        weights=model(torch.tensor(features if predict_features is None else predict_features,dtype=torch.float32)).numpy()
+    # Utility labels exist only for calibration; SFT weights intentionally have
+    # no labels and must never be compared against calibration targets.
+    labels=(targets > np.median(targets)).astype(int); auc=float(roc_auc_score(labels, calibration_scores)) if len(set(labels)) == 2 else None
+    return NN1Result(weights, float(spearmanr(calibration_scores, targets).statistic), auc)
 
 def retained_indices(weights: np.ndarray, retention: float) -> np.ndarray:
     if not 0 < retention <= 1: raise ValueError("retention must be in (0,1]")

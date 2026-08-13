@@ -3,8 +3,15 @@ purpose: official_trace_rewriting_medium
 seed: 42
 dataset: {name: openai/gsm8k, revision: 740312add88f781978c0658806c59bc2815b9866, config: main, train_split: train, eval_split: test, train_examples: 512, eval_examples: 128, cache_dir: .cache/huggingface}
 official_rewrite: {source: external/trace-rewriting/data/gsm8k/optimized, variant: optimized, examples: 512, provenance: provenance/rewrite_gsm8k_s42.json}
+traces: {path: outputs/traces/gsm8k_seed42_rewrite/official.jsonl}
 student: {id: Qwen/Qwen2.5-1.5B-Instruct, revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306, dtype: bfloat16}
 training: {dtype: bfloat16, max_length: 1024, per_device_batch_size: 1, gradient_accumulation_steps: 16, max_steps: 32, epochs: 1, learning_rate: 0.0002, warmup_ratio: 0.03, weight_decay: 0.0, gradient_checkpointing: true, lora_r: 16, lora_alpha: 32, lora_dropout: 0.05, target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]}
 evaluation: {max_prompt_length: 1024, max_new_tokens: 512, do_sample: false, batch_size: 1, exact_match: true}
+proxy: {id: Qwen/Qwen2.5-0.5B-Instruct, revision: 7ae557604adf67be50417f59c2c2f167def9a775, dtype: bfloat16, learning_rate: 0.0002}
+# Read-only, locally verified Qwen3-8B.  See outputs/paraphrase_smoke/…strategy.json.
+paraphraser: {id: /home/zixiao/Qwen3-model/Qwen3-8B, dtype: bfloat16}
+nn1: {calibration_examples: 64, hidden_dim: 128, epochs: 100, learning_rate: 0.001}
+nn2: {calibration_examples: 64, hidden_dim: 128, epochs: 100, learning_rate: 0.001, paraphrase_max_new_tokens: 256}
+smoke: {train_examples: 16, eval_examples: 2}
 fairness: {fixed_raw_pool: true, fixed_training_tokens: true, same_student: true, same_optimizer: adamw, same_decoding: true}
 outputs: {root: outputs, results_csv: results.csv}

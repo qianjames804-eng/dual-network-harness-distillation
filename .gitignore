@@ -16,6 +16,14 @@ outputs/.harness.lock
 outputs/**/*.lock
 outputs/**/*.tmp
 outputs/**/*.partial
+# Generated local experiment evidence/checkpoints remain reproducible but are
+# deliberately not source-controlled.
+outputs/ours_*/
+outputs/b0_*/
+outputs/b1_*/
+outputs/b4_*/
+outputs/paraphrase_smoke/
+outputs/manifests/
 wandb/
 external/
 *.log

@@ -1,0 +1,13 @@
+seed: 42
+dataset: {revision: 740312add88f781978c0658806c59bc2815b9866, cache_dir: .cache/huggingface, train_examples: 16, eval_examples: 2}
+traces: {path: outputs/traces/gsm8k_seed42_rewrite/official.jsonl}
+student: {id: Qwen/Qwen2.5-0.5B-Instruct, revision: 7ae557604adf67be50417f59c2c2f167def9a775, dtype: bfloat16}
+proxy: {id: Qwen/Qwen2.5-0.5B-Instruct, revision: 7ae557604adf67be50417f59c2c2f167def9a775, dtype: bfloat16, learning_rate: 0.0002}
+# Same verified local paraphraser as the formal GSM8K seed-42 configuration.
+paraphraser: {id: /home/zixiao/Qwen3-model/Qwen3-8B, dtype: bfloat16}
+training: {max_length: 512, per_device_batch_size: 1, gradient_accumulation_steps: 2, max_steps: 2, epochs: 1, learning_rate: 0.0002, warmup_ratio: 0.0, weight_decay: 0.0, gradient_checkpointing: true, lora_r: 8, lora_alpha: 16, lora_dropout: 0.05, target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]}
+evaluation: {max_prompt_length: 512, max_new_tokens: 128, do_sample: false, batch_size: 1}
+nn1: {calibration_examples: 4, hidden_dim: 16, epochs: 3, learning_rate: 0.001}
+nn2: {calibration_examples: 4, hidden_dim: 16, epochs: 3, learning_rate: 0.001, paraphrase_max_new_tokens: 256}
+smoke: {train_examples: 16, eval_examples: 2}
+outputs: {root: outputs, results_csv: results.csv}
