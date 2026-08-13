@@ -1,0 +1,12 @@
+{
+  "status": "blocked_no_downloadable_official_artifact",
+  "paper": "Antidistillation Sampling (NeurIPS 2025)",
+  "repository": null,
+  "trace_source": "https://antidistillation.com/traces/",
+  "commit": null,
+  "checkpoint": "not applicable to public trace retrieval",
+  "dataset": "interactive project-page traces only; no downloadable GSM8K corpus/data mapping confirmed",
+  "generation_parameters": "project page exposes approximately 80%, 70%, and 30% Teacher accuracy trace views; exact trace-generation parameters unavailable in a downloadable manifest",
+  "license": "not published on project page",
+  "retrieval_date": "2026-08-13"
+}

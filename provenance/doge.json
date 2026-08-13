@@ -1,0 +1,12 @@
+{
+  "status": "blocked_checkpoint_unreleased",
+  "paper": "DOGe: Defensive Output Generation for LLM Protection Against Knowledge Distillation",
+  "repository": "https://github.com/UNITES-Lab/DOGe",
+  "commit": "23b709aaa21206030307e078af6a2a4014b2a1e5",
+  "checkpoint": "not released; official README states 'Checkpoints will be released soon'",
+  "trace_source": "must be generated using the fixed official repository after checkpoint/training availability",
+  "dataset": "GSM8K (pending formal generation)",
+  "generation_parameters": "must be captured from fixed official generate.sh/config before run",
+  "license": "MIT",
+  "retrieval_date": "2026-08-13"
+}

@@ -3,7 +3,7 @@ from src.experiment_spec import ablation_jobs, full_jobs
 from src.nn1_data_weight.pipeline import fit_predict, retained_indices, utility_targets
 from src.nn2_judgment.pipeline import fit_judge, mastery_targets
 from datasets import Dataset
-from src.data.splits import split_training_pool, write_split_manifest
+from src.data.splits import assert_manifest_disjoint, split_training_pool, write_split_manifest
 
 def test_matrix_counts():
     assert len(full_jobs(["gsm8k","math"],[42,43,44])) == 54
@@ -18,4 +18,4 @@ def test_disjoint_study_splits(tmp_path):
     rows=Dataset.from_dict({"question":[f"q{i}" for i in range(8)],"answer":["a"]*8})
     splits=split_training_pool(rows,seed=42,nn1_count=2,nn2_count=2)
     assert set(splits.sft["question"]).isdisjoint(splits.nn1_calibration["question"])
-    path=tmp_path/"splits.json"; write_split_manifest(path,splits,seed=42,dataset_revision="fixed"); assert path.exists()
+    path=tmp_path/"splits.json"; write_split_manifest(path,splits,seed=42,dataset_revision="fixed"); assert path.exists(); assert_manifest_disjoint(path)

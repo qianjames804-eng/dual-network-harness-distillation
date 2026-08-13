@@ -1,0 +1,14 @@
+# Pending formal run: intentionally not launched until the three provenance
+# files below have status: ready and their trace mappings pass validation.
+profile: gsm8k_seed42_nine
+status: blocked_external_provenance
+seed: 42
+dataset: {name: openai/gsm8k, revision: 740312add88f781978c0658806c59bc2815b9866, train_examples: 7473, eval_examples: 1319}
+splits: {nn1_calibration_examples: 512, nn2_calibration_examples: 512, manifest: outputs/manifests/gsm8k_s42_splits.json}
+methods: [B0-Base, B1-Clean-KD, B2-ADS-KD, B3-DOGe-KD, B4-Rewrite-KD, Ours-Clean, Ours-ADS, Ours-DOGe, Ours-Rewrite]
+student: {id: Qwen/Qwen2.5-1.5B-Instruct, revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306, dtype: bfloat16}
+lora: {r: 16, alpha: 32, dropout: 0.05, learning_rate: 0.0002, epochs: 1, max_length: 1024, per_device_batch_size: 1, gradient_accumulation_steps: 16, optimizer: adamw}
+training: {lora_r: 16, lora_alpha: 32, lora_dropout: 0.05, learning_rate: 0.0002}
+evaluation: {questions: gsm8k_test_fixed_s42, max_prompt_length: 1024, max_new_tokens: 512, do_sample: false, batch_size: 1, exact_match: true}
+fairness: {fixed_training_tokens: true, fixed_raw_pool: true, identical_student_and_decoding: true}
+provenance: [provenance/ads.json, provenance/doge.json, provenance/rewrite.json]

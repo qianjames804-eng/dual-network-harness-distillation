@@ -1,0 +1,12 @@
+{
+  "status": "pending_trace_artifact_retrieval",
+  "paper": "Protecting Language Models Against Unauthorized Distillation through Trace Rewriting (ACL 2026)",
+  "repository": "https://github.com/xhOwenMa/trace-rewriting",
+  "commit": "a2afa048f6967badf9d4894c912469547eafd452",
+  "checkpoint": "pre-generated GSM8K/MATH traces are documented by the official README; local artifact retrieval/mapping has not completed",
+  "trace_source": "official repository data/gsm8k/{semantic,optimized}",
+  "dataset": "GSM8K (pending verified schema mapping)",
+  "generation_parameters": "official semantic or OPRO-optimized rewrite configuration; exact config must be copied into run provenance",
+  "license": "not specified in repository root; must be confirmed before formal use",
+  "retrieval_date": "2026-08-13"
+}
