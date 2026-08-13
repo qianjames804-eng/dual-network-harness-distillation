@@ -83,6 +83,7 @@ bash run_antidistill.sh rewrite --official-command '<Rewrite command>'
 
 ```bash
 .venv/bin/python -m src.matrix_runner --suite full --execute \
+  --split-manifest outputs/manifests/gsm8k_s42_splits.json \
   --execute-template 'your_job_command --dataset {dataset} --seed {seed} --method {method}'
 ```
 
