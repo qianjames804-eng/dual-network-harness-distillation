@@ -1,0 +1,25 @@
+{
+  "status": "ready",
+  "paper": "Protecting Language Models Against Unauthorized Distillation through Trace Rewriting (ACL 2026)",
+  "repository": "https://github.com/xhOwenMa/trace-rewriting",
+  "commit": "a2afa048f6967badf9d4894c912469547eafd452",
+  "dataset": "official GSM8K optimized traces mapped exactly to pinned GSM8K train",
+  "source_directory": "/home/zixiao/dualguard-kd/external/trace-rewriting/data/gsm8k/optimized",
+  "source_sha256": {
+    "state.json": "5f894b0c70bbaafb02701b690e7ec7d8cb222d10a81d6d5d05ee71769e6ccf5b",
+    "dataset_info.json": "e18e85df3434373507f51a962d6be0bd012f6c7db36d37af93d01510db59e766",
+    "data-00000-of-00001.arrow": "0c5fd0222b7ec8d6a5871672888979b3fa291555d3d89f76f392b468f9873e84",
+    "cache-eb9b597835832212.arrow": "2fe859f018d7245aa630bab623037c4ae08005e96e7b163108ffd806118279c4"
+  },
+  "schema": [
+    "original_trace",
+    "problem",
+    "rewrite_trace",
+    "solution"
+  ],
+  "rows_source": 5231,
+  "rows_selected": 512,
+  "seed": 42,
+  "license": "not specified in repository root; use restricted to reproducibility pending licensor clarification",
+  "retrieval_date": "2026-08-13"
+}
