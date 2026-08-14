@@ -1,0 +1,9 @@
+method,accuracy_percent,exact_match_percent,delta_vs_b0_pp,train_tokens,global_step,derived_metric,derived_value
+B0 Base,70.31,70.31,0.00,0,0,,
+B1 Clean-KD,57.03,57.03,-13.28,168931,32,,
+B4 Rewrite-KD,7.03,7.03,-63.28,27818,32,,
+Ours-Clean,56.25,56.25,-14.06,168931,32,,
+Ours-Rewrite,6.25,6.25,-64.06,27818,32,,
+Derived,,,,,,Rewrite Drop,50.00pp
+Derived,,,,,,Recovery,-0.78pp
+Derived,,,,,,Recovery Rate,-1.56%
