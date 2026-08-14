@@ -1,0 +1,13 @@
+GitHub 仓库：
+https://github.com/qianjames804-eng/dual-network-harness-distillation.git
+
+当前分支：main
+正式结果汇总 commit：f31bd3f Summarize GSM8K seed42 rewrite five-arm results
+领导材料 commit：25a2f52 Add leadership report for GSM8K seed42 results
+
+原始正式结果位置：
+outputs/b0_base-s42-20260813T060036Z/
+outputs/b1_clean_kd-s42-20260813T064129Z/
+outputs/b4_rewrite_kd-s42-20260813T071922Z/
+outputs/ours_clean-s42-20260813T073348Z/
+outputs/ours_rewrite-s42-20260813T084521Z/
